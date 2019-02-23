@@ -1,0 +1,26 @@
+UPDATE
+
+curl -X POST \
+  http://localhost:9090/api/customer/update \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -d '{
+  "id":1L,
+  "firstname":"Nileshkumar",
+  "lastname":"Patel"
+}'
+
+DELETE
+
+curl -X POST \
+  http://localhost:9090/api/customer/delete/2\
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json'
+
+SELECT ALL
+
+http://localhost:9090/api/customers
+
+SELECT ONE
+
+http://localhost:9090/api/customer/2
