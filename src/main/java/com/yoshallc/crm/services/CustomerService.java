@@ -3,12 +3,13 @@ package com.yoshallc.crm.services;
 import com.yoshallc.crm.domains.Customer;
 import com.yoshallc.crm.entities.CustomerEntity;
 import com.yoshallc.crm.repositories.CustomerRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
+@Slf4j
 public class CustomerService {
 
     private CustomerRepository customerRepository;
@@ -28,17 +29,20 @@ public class CustomerService {
     // find customer by id
     public CustomerEntity getCustomer(Long id){
 
-        CustomerEntity customerEntity = customerRepository.findById(id)
+        return customerRepository.findById(id)
                 .orElse(new CustomerEntity());
-
-        return customerEntity;
 
     }
 
     // update customer
     public void updateCustomer(Customer customer){
 
-        customerRepository.save(new ModelMapper().map(customer, CustomerEntity.class));
+        try {
+            customerRepository.save(new ModelMapper().map(customer, CustomerEntity.class));
+        } catch(Exception ex){
+
+            log.error(ex.getLocalizedMessage());
+        }
     }
 
     // delete customer by id
