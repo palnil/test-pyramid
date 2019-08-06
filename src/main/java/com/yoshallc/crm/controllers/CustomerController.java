@@ -23,7 +23,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping(value = "/customers",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/customers")
     public ResponseEntity<List<Customer>> allCustomers(){
        return new ResponseEntity<>(customerService.getCustomers().stream()
                 .map(entity -> new ModelMapper().map(entity, Customer.class))
