@@ -32,10 +32,10 @@ public class Application {
 //        return args -> {
 //            List<CustomerEntity> customerList = Arrays.asList(
 //
-//                    new CustomerEntity("Nilesh", "Patel"),
-//                    new CustomerEntity("Palak", "Patel"),
-//                    new CustomerEntity("Swina", "Patel"),
-//                    new CustomerEntity("Stuti", "Patel")
+//                    new CustomerEntity("John", "Smith"),
+//                    new CustomerEntity("Kevin", "Paul"),
+//                    new CustomerEntity("Roma", "Shah"),
+//                    new CustomerEntity("Neal", "Levitt")
 //            );
 //
 //            this.customerRepository.saveAll(customerList);

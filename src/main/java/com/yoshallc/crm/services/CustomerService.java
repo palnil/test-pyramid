@@ -5,6 +5,7 @@ import com.yoshallc.crm.entities.CustomerEntity;
 import com.yoshallc.crm.repositories.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -12,12 +13,8 @@ import java.util.List;
 @Slf4j
 public class CustomerService {
 
+    @Autowired
     private CustomerRepository customerRepository;
-
-    public CustomerService(CustomerRepository customerRepository){
-
-        this.customerRepository = customerRepository;
-    }
 
     // find all customers
     public List<CustomerEntity> getCustomers(){

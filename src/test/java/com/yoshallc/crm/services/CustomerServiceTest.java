@@ -4,7 +4,6 @@ import com.yoshallc.crm.domains.Customer;
 import com.yoshallc.crm.entities.CustomerEntity;
 import com.yoshallc.crm.repositories.CustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +26,11 @@ class CustomerServiceTest {
     List<Customer> customerListResponse;
     List<CustomerEntity> customerList;
 
-
     @Autowired
     CustomerService customerService;
 
-
-   // @MockBean(name = "customerRepository")
     @MockBean
     CustomerRepository customerRepository;
-
 
     @BeforeEach
     void setUp() {
@@ -53,7 +48,7 @@ class CustomerServiceTest {
         );
     }
 
-    @Disabled
+   
     @Test
     void getCustomers() {
 
@@ -62,7 +57,7 @@ class CustomerServiceTest {
 
     }
 
-    @Disabled
+   
     @Test
     void getCustomer_returnsOneCustomer() {
 
@@ -70,8 +65,4 @@ class CustomerServiceTest {
         assertEquals("Nilesh",customerService.getCustomer(1L).getFirstname());
     }
 
-    @Disabled
-    @Test
-    void updateCustomer() {
-    }
 }

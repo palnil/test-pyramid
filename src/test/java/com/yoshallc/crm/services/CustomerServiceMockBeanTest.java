@@ -6,6 +6,7 @@ import com.yoshallc.crm.repositories.CustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,35 +18,33 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
-class CustomerServiceClassTest {
+class CustomerServiceMockBeanTest {
 
     List<Customer> customerListResponse;
     List<CustomerEntity> customerList;
 
-    private CustomerService customerService;
-
     @Mock
     CustomerRepository customerRepository;
+
+    @InjectMocks
+    CustomerService customerService;
 
 
     @BeforeEach
     void setUp() {
 
-        customerService = new CustomerService(customerRepository);
-
         customerList = Arrays.asList(
-                new CustomerEntity(1L,"Nilesh","Patel"),
-                new CustomerEntity(2L,"Palak","Patel")
+                new CustomerEntity(1L,"John","Smith"),
+                new CustomerEntity(2L,"David","Levitt")
         );
 
         customerListResponse = Arrays.asList(
-                new Customer(1L,"Nilesh","Patel"),
-                new Customer(2L,"Palak","Patel")
+                new Customer(1L,"John","Smith"),
+                new Customer(2L,"David","Levitt")
         );
     }
 
@@ -61,24 +60,7 @@ class CustomerServiceClassTest {
     void getCustomer_returnsOneCustomer() {
 
         when(customerRepository.findById(any())).thenReturn(Optional.of(customerList.get(0)));
-        assertEquals("Nilesh",customerService.getCustomer(1L).getFirstname());
+        assertEquals("John",customerService.getCustomer(1L).getFirstname());
     }
 
-    @Test
-    void updateCustomer() {
-
-        customerService.updateCustomer(new Customer(3L,"Test","Test"));
-
-        verify(customerRepository, times(1)).save(any());
-    }
-
-    @Test
-    void updateCustomer_ThrowsException() {
-
-
-
-        assertThrows(Exception.class, () -> {
-            customerRepository.save(any());
-        });
-    }
 }
