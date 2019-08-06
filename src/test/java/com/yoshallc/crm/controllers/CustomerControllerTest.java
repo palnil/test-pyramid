@@ -77,8 +77,6 @@ public class CustomerControllerTest {
     }
 
 
-
-
     @Test
     void givenCustomers_WhenGetCustomerById_returnsOneCustomer() throws Exception{
 
@@ -94,7 +92,5 @@ public class CustomerControllerTest {
 
     }
 
-    /*@Test
-    void updateCustomer() {
-    }*/
+
 }

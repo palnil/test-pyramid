@@ -16,10 +16,8 @@
 
     <properties>
         <java.version>1.8</java.version>
-
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <sonar.sources>${project.basedir}/src/main</sonar.sources>
@@ -29,8 +27,6 @@
         <sonar-maven-plugin.version>3.4.1.1168</sonar-maven-plugin.version>
         <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
         <sonar.junit.reportPaths>${project.basedir}/target/surefire-reports,${project.basedir}/target/failsafe-reports</sonar.junit.reportPaths>
-
-
     </properties>
 
 
@@ -59,7 +55,6 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-
         <!-- test dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -109,7 +104,6 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-
             </plugin>
 
             <!-- Spring Boot configures surefire by default, but not failsafe -->
@@ -187,5 +181,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
