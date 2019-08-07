@@ -27,6 +27,11 @@
         <sonar-maven-plugin.version>3.4.1.1168</sonar-maven-plugin.version>
         <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
         <sonar.junit.reportPaths>${project.basedir}/target/surefire-reports,${project.basedir}/target/failsafe-reports</sonar.junit.reportPaths>
+        <sonar.coverage.exclusions>
+            **/entities/**/*,
+            **/A*pplication.*,
+            **/domains/*
+        </sonar.coverage.exclusions>
     </properties>
 
 
@@ -129,6 +134,11 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*.Entity.*</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <id>pre-unit-test</id>
@@ -149,10 +159,6 @@
                         <configuration>
                             <dataFile>${project.basedir}/target/coverage-reports/jacoco.exec</dataFile>
                             <outputDirectory>${project.basedir}/target/site/jacoco-ut</outputDirectory>
-                            <excludes>
-                                <exclude>**/entities/*.class</exclude>
-                                <exclude>**/*Application.class</exclude>
-                            </excludes>
                         </configuration>
                     </execution>
                     <execution>
