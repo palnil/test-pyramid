@@ -34,12 +34,8 @@ public class CustomerService {
     // update customer
     public void updateCustomer(Customer customer){
 
-        try {
-            customerRepository.save(new ModelMapper().map(customer, CustomerEntity.class));
-        } catch(Exception ex){
+        customerRepository.save(new ModelMapper().map(customer, CustomerEntity.class));
 
-            log.error(ex.getLocalizedMessage());
-        }
     }
 
     // delete customer by id
