@@ -44,13 +44,13 @@ public class CustomerControllerTest {
     public void setUp(){
 
         customerList = Arrays.asList(
-                new CustomerEntity(1L,"Nilesh","Patel"),
-                new CustomerEntity(2L,"Palak","Patel")
+                new CustomerEntity(1L,"John","Smith"),
+                new CustomerEntity(2L,"Joe","Doe")
         );
 
         customerListResponse = Arrays.asList(
-                new Customer(1L,"Nilesh","Patel"),
-                new Customer(2L,"Palak","Patel")
+                new Customer(1L,"John","Smith"),
+                new Customer(2L,"Joe","Doe")
         );
 
 
@@ -66,8 +66,8 @@ public class CustomerControllerTest {
         MvcResult result = mvc.perform(get("/api/customers")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].firstname", is("Nilesh")))
-                .andExpect(jsonPath("$[1].firstname", is("Palak")))
+                .andExpect(jsonPath("$[0].firstname", is("John")))
+                .andExpect(jsonPath("$[1].firstname", is("Joe")))
                 .andReturn();
 
         log.info(result.getResponse().getContentAsString());
@@ -81,13 +81,13 @@ public class CustomerControllerTest {
     void givenCustomers_WhenGetCustomerById_returnsOneCustomer() throws Exception{
 
 
-        when(customerService.getCustomer(anyLong())).thenReturn(new CustomerEntity(1L,"Swina","Patel"));
+        when(customerService.getCustomer(anyLong())).thenReturn(new CustomerEntity(1L,"Jane","Doe"));
 
         MvcResult result = mvc.perform(get("/api/customer/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print())
-                .andExpect(jsonPath("firstname", is("Swina")))
+                .andExpect(jsonPath("firstname", is("Jane")))
                 .andReturn();
 
     }
